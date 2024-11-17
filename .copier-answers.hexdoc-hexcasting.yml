@@ -1,0 +1,27 @@
+# Changes here will be overwritten by Copier. NEVER EDIT MANUALLY
+# See: https://copier.readthedocs.io/en/stable/configuring/#the-copier-answersyml-file
+_commit: v0.1.11
+_src_path: gh:hexdoc-dev/hexdoc-hexcasting-template
+author: MoonlitJolteon
+book_id: hexsoul:hexsoulbook
+default_branch: main
+github_repo: hexsoul
+gradle_mod_version_key: modVersion
+hexdoc_mod_plugin_classname: HexsoulModPlugin
+hexdoc_plugin_classname: HexsoulPlugin
+java_lang:
+    ext: java
+    src: java
+java_package: net/hexsoul
+mod_display_name: Hex Soul
+modid: hexsoul
+multiloader: true
+package_export_root: doc/src/hexdoc_hexsoul/_export
+package_name: hexdoc-hexsoul
+package_slug: hexdoc_hexsoul
+package_src: doc/src/hexdoc_hexsoul
+pages_url: https://hexsoul.munebase.dev
+pattern_regex:
+    per_world_value: 'true'
+    regex: make\(\s*"(?P<name>[a-zA-Z0-9_\/]+)",\s*(?:new )?(?:ActionRegistryEntry|OperationAction)\(\s*HexPattern\.fromAngles\(\s*"(?P<signature>[aqweds]+)",\s*HexDir.(?P<startdir>\w+)\)
+pattern_registry: registry/HexsoulPatternRegistry.java

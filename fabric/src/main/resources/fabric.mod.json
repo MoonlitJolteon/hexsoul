@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "hexsoul",
+  "version": "${version}",
+  "name": "Hex Soul",
+  "description": "The mind is but a gate to the soul... What happens if you leave the gate open?",
+  "authors": [
+    "MoonlitJolteon"
+  ],
+  "contact": {
+    "homepage": "https://hexsoul.munebase.dev",
+    "sources": "https://github.com/MoonlitJolteon/hexsoul"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.hexsoul.fabric.HexsoulFabric"
+    ],
+    "client": [
+      "net.hexsoul.fabric.HexsoulClientFabric"
+    ]
+  },
+  "mixins": [
+    "hexsoul-common.mixins.json",
+    "hexsoul.mixins.json"
+  ],
+  "depends": {
+    "minecraft": ">=${minecraftVersion}",
+    "fabricloader": ">=${fabricLoaderVersion}",
+    "fabric-api": "*",
+    "fabric-language-kotlin": ">=${fabricKotlinVersion}",
+    "architectury": ">=${architecturyVersion}",
+    "hexcasting": ">=${hexcastingVersion}"
+  }
+}

@@ -1,0 +1,21 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+# https://copier.readthedocs.io/en/stable/configuring/#the-copier-answersyml-file
+_commit: v0.0.9
+_src_path: gh:FallingColors/hexdummy
+author: MoonlitJolteon
+capitalize_platforms: false
+classname: Hexsoul
+default_branch: main
+description: The mind is but a gate to the soul... What happens if you leave the gate
+    open?
+display_name: Hex Soul
+github_repo: hexsoul
+hexcasting_version: 0.10.3
+homepage_url: https://hexsoul.munebase.dev
+initial_mod_version: 0.0.1
+java_version: 17
+license: MIT
+mappings_name: Mojmap
+modid: hexsoul
+package: net.hexsoul
+sources_url: https://github.com/MoonlitJolteon/hexsoul
