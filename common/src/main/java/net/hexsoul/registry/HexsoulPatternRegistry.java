@@ -1,48 +1,31 @@
 package net.hexsoul.registry;
 
-import at.petrak.hexcasting.api.PatternRegistry;
-import at.petrak.hexcasting.api.spell.Action;
-import at.petrak.hexcasting.api.spell.math.HexDir;
-import at.petrak.hexcasting.api.spell.math.HexPattern;
-import kotlin.Triple;
-import net.hexsoul.casting.patterns.math.OpSignum;
-import net.hexsoul.casting.patterns.spells.OpCongrats;
-import net.minecraft.resources.ResourceLocation;
+import at.petrak.hexcasting.api.casting.ActionRegistryEntry;
+import at.petrak.hexcasting.api.casting.castables.Action;
+import at.petrak.hexcasting.api.casting.math.HexDir;
+import at.petrak.hexcasting.api.casting.math.HexPattern;
+import at.petrak.hexcasting.common.lib.HexRegistries;
+import dev.architectury.registry.registries.DeferredRegister;
+import dev.architectury.registry.registries.RegistrySupplier;
+import net.hexsoul.casting.patterns.spells.OpSolidifyMind;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static net.hexsoul.Hexsoul.id;
+import static net.hexsoul.Hexsoul.MOD_ID;
 
 public class HexsoulPatternRegistry {
-    public static List<Triple<HexPattern, ResourceLocation, Action>> PATTERNS = new ArrayList<>();
-    public static List<Triple<HexPattern, ResourceLocation, Action>> PER_WORLD_PATTERNS = new ArrayList<>();
+    public static DeferredRegister<ActionRegistryEntry> PATTERN_REGISTY = DeferredRegister.create(MOD_ID, HexRegistries.ACTION);
     // IMPORTANT: be careful to keep the registration calls looking like this, or you'll have to edit the hexdoc pattern regex.
-    public static HexPattern CONGRATS = registerPerWorld(HexPattern.fromAngles("eed", HexDir.WEST), "congrats", new OpCongrats());
-    public static HexPattern SIGNUM = register(HexPattern.fromAngles("edd", HexDir.NORTH_WEST), "signum", new OpSignum());
+        public static RegistrySupplier<ActionRegistryEntry> CONGRATS = register(HexPattern.fromAngles("dewwqaqwwed", HexDir.NORTH_EAST), "solidify_mind", new OpSolidifyMind());
 
     public static void init() {
-        try {
-            for (Triple<HexPattern, ResourceLocation, Action> patternTriple : PATTERNS) {
-                PatternRegistry.mapPattern(patternTriple.getFirst(), patternTriple.getSecond(), patternTriple.getThird());
-            }
-            for (Triple<HexPattern, ResourceLocation, Action> patternTriple : PER_WORLD_PATTERNS) {
-                PatternRegistry.mapPattern(patternTriple.getFirst(), patternTriple.getSecond(), patternTriple.getThird(), true);
-            }
-        } catch (PatternRegistry.RegisterPatternException e) {
-            e.printStackTrace();
-        }
+        PATTERN_REGISTY.register();
     }
 
-    private static HexPattern register(HexPattern pattern, String name, Action action) {
-        Triple<HexPattern, ResourceLocation, Action> triple = new Triple<>(pattern, id(name), action);
-        PATTERNS.add(triple);
-        return pattern;
+    private static RegistrySupplier<ActionRegistryEntry> register(HexPattern pattern, String name, Action action) {
+        return PATTERN_REGISTY.register(name, () -> new ActionRegistryEntry(pattern, action));
     }
 
-    private static HexPattern registerPerWorld(HexPattern pattern, String name, Action action) {
-        Triple<HexPattern, ResourceLocation, Action> triple = new Triple<>(pattern, id(name), action);
-        PER_WORLD_PATTERNS.add(triple);
-        return pattern;
+    // TODO: Figure out how per world registries work in 1.20
+    private static RegistrySupplier<ActionRegistryEntry> registerPerWorld( HexPattern pattern,String name, Action action) {
+        return PATTERN_REGISTY.register(name, () -> new ActionRegistryEntry(pattern, action));
     }
 }

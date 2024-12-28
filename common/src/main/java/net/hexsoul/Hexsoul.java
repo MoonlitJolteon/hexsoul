@@ -1,7 +1,7 @@
 package net.hexsoul;
 
+import net.hexsoul.client.HexSoulKeybindings;
 import net.hexsoul.registry.HexsoulIotaTypeRegistry;
-import net.hexsoul.registry.HexsoulItemRegistry;
 import net.hexsoul.registry.HexsoulPatternRegistry;
 import net.hexsoul.networking.HexsoulNetworking;
 import net.minecraft.resources.ResourceLocation;
@@ -18,14 +18,14 @@ public class Hexsoul {
 
 
     public static void init() {
-        LOGGER.info("Hex Soul says hello!");
+        LOGGER.info("Opening up the soul");
 
         HexsoulAbstractions.initPlatformSpecific();
-        HexsoulItemRegistry.init();
         HexsoulIotaTypeRegistry.init();
         HexsoulPatternRegistry.init();
 		HexsoulNetworking.init();
 
+        HexSoulKeybindings.INSTANCE.registerKeybinds(); // TODO: only run this clientside
         LOGGER.info(HexsoulAbstractions.getConfigDirectory().toAbsolutePath().normalize().toString());
     }
 

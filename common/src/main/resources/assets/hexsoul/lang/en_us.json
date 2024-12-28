@@ -8,6 +8,6 @@
   "hexsoul.entry.dummy_actions": "Dummy Actions",
   "hexsoul.page.dummy_spells.congrats": "Accepts a player entity, tells them they are doing a good job and makes them look up.",
   "hexsoul.page.dummy_actions.signum": "Accepts a $(l:casting/101)number/$, returns -1 if it is negative, 0 if 0, 1 if positive.",
-  "text.hexsoul.congrats": "Good job, %1$s!",
-  "text.hexsoul.congrats.player": "a Player"
+  "text.hexsoul.casting_entity": "a Casting Entity",
+  "item.hexsoul.soul_opener": "Soul Opener"
 }
